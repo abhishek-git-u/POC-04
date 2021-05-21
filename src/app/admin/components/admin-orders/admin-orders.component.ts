@@ -1,6 +1,7 @@
 import { Order } from '../../../shared/models/order';
 import { OrderService } from '../../../shared/services/order.service';
 import { Component, OnInit } from '@angular/core';
+import { FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'app-admin-orders',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-orders.component.css']
 })
 export class AdminOrdersComponent {
-  orders$;
+  orders$: FirebaseListObservable<any[]>;
 
   constructor(private orderService: OrderService) { 
     this.orders$ = orderService.getOrders();
